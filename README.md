@@ -53,3 +53,7 @@ func main() {
 }
 
 ```
+
+## Expo documentation
+
+[Push Notifications Overview](https://docs.expo.dev/push-notifications/overview/){:target="_blank" rel="noopener"}
