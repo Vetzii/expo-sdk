@@ -19,6 +19,7 @@ import (
 
 	expo "github.com/vetzii/expo-sdk/application/v1"
 	expo_sdk_domain "github.com/vetzii/expo-sdk/domain"
+	expo_interfaces "github.com/vetzii/expo-sdk/interfaces"
 )
 
 func main() {
@@ -33,20 +34,23 @@ func main() {
 	tokens = append(tokens, "ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]")
 
 	//	Instance push notification service
-	pushNotification = expo.PushNotification(nil)
+	pushNotification = expo.PushNotification(&expo_interfaces.Config{AccessToken: "EXPO_ACCESS_TOKEN"})
 
-	// Send notification
+
+	//	Send notification
 	if response, err = pushNotification.Add(
 		&expo_sdk_domain.PushNotificationMessage{
 			To:       tokens,
-			Body:     "Expo SDK",
+			Body:     "vetzii notification",
 			Data:     map[string]string{"withSome": "data"},
 			Sound:    "default",
 			Title:    "Push Notification",
 			Priority: "default", //	"default" | "normal" | "high"
 		},
 	); err != nil {
-		panic(err)
+		fmt.Println("error sending notification: ", err.Error())
+		//	option
+		//	panic(err)
 	}
 
 	fmt.Println(response.Status) // "error" | "ok"
