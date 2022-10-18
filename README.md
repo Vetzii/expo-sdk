@@ -42,7 +42,7 @@ func main() {
 		&expo_sdk_domain.PushNotificationMessage{
 			To:       tokens,
 			Body:     "vetzii notification",
-			Data:     map[string]string{"withSome": "data"},
+			Data:     map[string]interface{}{"withSome": "data"},
 			Sound:    "default",
 			Title:    "Push Notification",
 			Priority: "default", //	"default" | "normal" | "high"
